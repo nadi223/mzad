@@ -1,33 +1,36 @@
-# تصميم منصة المزادات – Jetpack Compose
+# مزاد (Mzad) - تطبيق المزادات والبيوع المباشرة
 
-## الملفات
-```
-ui/theme/AuctionTheme.kt          الألوان، الأشكال، الخطوط، النصوص (معزولة عن بقية المنصات)
-ui/model/AuctionUiModels.kt       نماذج الواجهة (الأسعار نصوص جاهزة → لا افتراض لعملة معينة)
-ui/components/Basics.kt           الصورة، LIVE، الشارات، الأزرار
-ui/components/Chrome.kt           الشريط العلوي، الشريط السفلي مع زر الإضافة، زر الدعم
-ui/components/HomeParts.kt        البانر، بانر الإضافة، شبكة الفئات، عنوان القسم
-ui/components/Cards.kt            البطاقة المصغّرة، بطاقة البيع المباشر، بطاقة القائمة الكبيرة
-ui/screens/AuctionsHomeScreen.kt  الشاشة الرئيسية
-ui/screens/AuctionDetailScreen.kt شاشة التفاصيل
-ui/screens/AuctionPreviews.kt     معاينات ببيانات تجريبية
-```
+تطبيق أندرويد متكامل مبني باستخدام **Kotlin** و **Jetpack Compose** وفق أحدث معايير **Material Design 3**، مصمم خصيصاً لمنصات المزادات الإلكترونية والبيوع المباشرة الفاخرة للسيارات والعقارات والمعدات والمجوهرات.
 
-## الاعتماديات (build.gradle)
-```kotlin
-implementation(platform("androidx.compose:compose-bom:2024.10.01"))
-implementation("androidx.compose.material3:material3")
-implementation("androidx.compose.material:material-icons-extended")
-implementation("androidx.compose.foundation:foundation")
-implementation("io.coil-kt:coil-compose:2.7.0")
-```
+## المميزات الرئيسية (Core Features)
 
-## الدمج
-1. غيّر `com.yourapp.auctions` إلى اسم حزمتك.
-2. لفّ شاشات المزادات فقط: `AuctionTheme { AuctionsHomeScreen(state, actions) }`.
-3. حوّل بياناتك الحالية إلى `AuctionsHomeUiState` في الـ ViewModel.
-   - إخفاء/إظهار فئة أو قسم أو بانر = حذفه من القائمة أو إضافته.
-4. الاتجاه: التصميم مكتوب ليظهر كما هو مطلوب في RTL. مرّر `layoutDirection = LayoutDirection.Rtl` إذا لم يكن تطبيقك RTL أصلاً.
-5. النصوص: مرّر `AuctionStrings(...)` من `stringResource` ليعمل زر اللغة.
-6. الشعار والاسم: مرّر شعارك أنت عبر `logo = { ... }` و`brandName`.
-7. أيقونة التواصل (واتساب) في الشريط العلوي: استبدل `contactIcon` بأيقونتك.
+1. **دعم ثنائي اللغة (RTL & LTR):**
+   - واجهة كاملة باللغة العربية مع اتجاه من اليمين إلى اليسار (RTL).
+   - إمكانية التبديل الفوري إلى اللغة الإنجليزية (LTR) بضغطة زر واحدة من الشريط العلوي أو شاشة الحساب.
+2. **عروض وشاشات المزاد التفاعلية:**
+   - **Hero Banners:** بانر إعلاني متحرك بتمرير تلقائي ويدوي لأهم المزادات الجارية.
+   - **شبكة الفئات (Category Mosaic):** تقسيم ذكي لوحدات الفئات (Small & Wide) مع عداد إعلانات بلون قرمزي مميز.
+   - **أقسام متخصصة:** عروض المزادات الحية (مع عد تنازلي وعدد المزايدات الحالية) وعروض البيع المباشر (Direct Sale).
+   - **جميع المزادات (All Auctions):** بطاقات عرض موسعة مع فسيفساء صور متعددة، شارات LIVE والتمييز، وزر إضافة للمفضلة.
+3. **شاشة التفاصيل الكاملة (Auction Detail):**
+   - معرض صور أفقي متكامل مع مؤشر عدد الصور وزر الرجوع.
+   - شرائح المواصفات الملونة (Spec Chips) بحسب نوع المعروض (عقارات، مركبات، مجوهرات).
+   - شريط الإجراء السفلي: "تواصل مع البائع" أو "زايد الآن".
+4. **المزايدة الفورية التفاعلية (Live Bidding):**
+   - نافذة مزايدة تتيح الرفع السريع بمبالغ محددة (+$50، +$100، +$250، +$500) وتحديث المزايدة في الوقت الحقيقي.
+5. **المحفظة الإلكترونية (Wallet):**
+   - عرض الرصيد المتاح ورصيد تأمين المزايدات المحجوز وسجل العمليات والحوالات.
+6. **مزاداتي (My Auctions):**
+   - تبويبات للمزايدات الجارية، المزادات الرابحة، والإعلانات المعروضة من قبل المستخدم.
+7. **إضافة مزاد جديد:**
+   - نافذة سفلية لنشر عنصر جديد (سيارة، عقار، معدات) وتحديد نوع البيع (مزاد حي أو بيع مباشر) مع ظهورها الفوري في القائمة.
+8. **أيقونة التطبيق المتكيفة (Adaptive Launcher Icon):**
+   - أيقونة ذهبية بمطرقة المزاد وشعار الدرع على خلفية خضراء داكنة `#0F3B33`.
+
+## الهيكلية التقنية (Tech Stack)
+
+- **Language:** Kotlin 2.2
+- **UI Toolkit:** Jetpack Compose (Material 3)
+- **Image Loading:** Coil Compose
+- **Architecture:** Clean Architecture / MVVM Pattern
+- **SDK Target:** Android SDK 36 (Android 16 / Android 15 compatible, minSdk 26)

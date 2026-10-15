@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Mzad" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#0F3B33</item>
+        <item name="android:navigationBarColor">#1B4F47</item>
+    </style>
+</resources>

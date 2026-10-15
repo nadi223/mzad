@@ -1,0 +1,8 @@
+{
+  "name": "Mzad",
+  "description": "منصة مزادات إلكترونية وبيوع مباشرة للسيارات والعقارات والمعدات الفاخرة مع عروض حية وسجل مزايدات تفاعلي",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
